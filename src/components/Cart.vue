@@ -1,5 +1,24 @@
 <template>
-  <div></div>
+  <div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>课程名</th>
+          <th>单价</th>
+          <th>数量</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="c in cart" :key="c.id">
+          <td>{{c.text}}</td>
+          <td>{{c.price}}</td>
+          <td>{{c.count}}</td>
+          <td>{{c.price*c.count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
