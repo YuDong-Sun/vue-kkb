@@ -25,17 +25,14 @@
 export default {
   data () {
     return {
-        
+        cart:[]
     };
   },
-
-  components: {},
-
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
+  methods:{
+    name(){
+      
+    }
+  }
 }
 
 </script>
