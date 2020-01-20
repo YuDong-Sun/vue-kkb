@@ -3,18 +3,18 @@
     <ul>
       <li v-for="item in goods" v-bind:key="item.id">
         <span>商品:{{item.text}}</span>
-        <span>價格:{{item.price}}</span>
-        <button @click="addCar(item)">加入購物車</button>
+        <span>价格:{{item.price}}</span>
+        <button @click="addCart(item)">加入购物车</button>
       </li>
     </ul>
     <input type="text" v-model="text">
     <button @click="addProduct">添加</button>
-    <h2>{{ text }}</h2>
-    {{cart}}
+    <Cart ref="cart"></Cart>
   </div>
 </template>
 
 <script>
+import Cart from './Cart'
 export default {
   name: 'HelloWorld',
   data(){
@@ -26,9 +26,11 @@ export default {
         {id:3,text:'目录三',price:"111"},
         {id:4,text:'目录四',price:"3685"}
       ],
-      text:"",
-      cart:[]
+      text:""
     }
+  },
+  components: {
+    Cart,
   },
   created(){
     setTimeout(() => {
@@ -46,13 +48,8 @@ export default {
       }
       this.text = "";
     },
-    addCar(item){
-      const ret = this.cart.find(v => v.id === item.id);
-      if(ret){
-        ret.count += 1;
-      }else{
-        this.cart.push({...item,count:1})
-      }
+    addCart(item){
+      this.$refs.cart.addCart(item)
     }
   },
   props: {

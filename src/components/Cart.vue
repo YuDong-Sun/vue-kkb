@@ -29,8 +29,13 @@ export default {
     };
   },
   methods:{
-    name(){
-      
+    addCart(item){
+      const ret = this.cart.find(v => v.id === item.id);
+      if(ret){
+        ret.count += 1;
+      }else{
+        this.cart.push({...item,count:1})
+      }
     }
   }
 }
